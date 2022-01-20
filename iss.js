@@ -51,12 +51,12 @@ const fetchISSFlyoverTimes = (coords, callback) => {
 const nextISSTimesForMyLocation = (callback) => {
   fetchMyIP((error, ip) => {
     if (error) {
-      return error;
+      return callback(error, null);
     }
 
     fetchCoordsByIP(ip, (error, coords) => {
       if (error) {
-        return error;
+        return callback(error, null);
       }
 
       fetchISSFlyoverTimes(coords, (error, passTimes) => {
