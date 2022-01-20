@@ -28,12 +28,8 @@ const fetchCoordsByIP = (ip, callback) => {
       const msg = `Status code ${response.statusCode} when fetching IP. Response ${body}`;
       return callback(Error(msg), null);
     }
-    const data = JSON.parse(body);
-    let coordinates = {
-      latitude: data.latitude,
-      longitude: data.longitude,
-    };
-    callback(null, coordinates);
+    const { latitude, longitude } = JSON.parse(body);
+    callback(null, { latitude, longitude });
   });
 };
 
